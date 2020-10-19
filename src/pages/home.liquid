@@ -1,0 +1,39 @@
+---
+title: Greetings from Liquid
+products:
+  - name: Pants
+    sale: true
+  - name: Socks
+    sale: false
+  - name: Jeans
+    sale: false
+  - name: Hats
+    sale: true
+---
+
+<main>
+  <h1>{{ title }} ({{ "" | liquid_version }})</h1>
+  <p>@11ty/eleventy: {{ "" | eleventy_version }}</p>
+</main>
+
+{% assign nerd_cards = products | where: "sale", true %}
+
+{% if nerd_cards.length %}
+<ul>
+{% for card in nerd_cards %}
+<li>{{ card.name }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% comment %}
+  <!-- DEFAULT -->
+  <h1>Greetings from Liquid (6.4.3)</h1>
+  <p>@11ty/eleventy: 0.11.0</p>
+{% endcomment %}
+
+{% comment %}
+  <!-- HOTFIXED -->
+  <h1>Greetings from Liquid (9.16.1)</h1>
+  <p>@11ty/eleventy: 0.11.0</p>
+{% endcomment %}
